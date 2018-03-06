@@ -1,0 +1,5 @@
+#Ensure at least one platform supported in metadata:
+~FC067
+
+#Ensure cookbook shared under an OSI-approved open source license
+~FC078

@@ -1,0 +1,38 @@
+---
+driver:
+  name: ec2
+  security_group_ids: ['sg-79f5090f', 'sg-12867a64'] # All SG's for the instance
+  region: us-east-1
+  require_chef_omnibus: true
+  subnet_id: subnet-c46b05b2
+  instance_type: t2.medium
+  interface: private # The DNS or IP to use when connecting to the instance
+  tags:
+    Name: 'delivery-test-instance'
+
+transport:
+  ssh_key: <%= ENV['KITCHEN_EC2_SSH_KEY_PATH'] %> # Path to the private key file of the AWS keypair
+  connection_timeout: 10
+  connection_retries: 5
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12
+
+verifier:
+  name: inspec
+  inspec_tests:
+    - test/smoke
+
+platforms:
+  - name: amazon-linux
+    driver:
+      image_id: ami-97785bed
+    transport:
+      username: ec2-user
+
+suites:
+  - name: default
+    run_list:
+      - recipe[infra.chef.cookbook.automate_test1::default]
+      

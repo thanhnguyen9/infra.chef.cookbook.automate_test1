@@ -1,0 +1,10 @@
+name 'infra.chef.cookbook.automate_test1'
+maintainer 'cog'
+maintainer_email 'cog@gamestop.com'
+license 'All Rights Reserved'
+description 'Testing Chef Automate'
+long_description 'Installs/Configures infra.chef.cookbook.automate_test1'
+source_url 'https://github.com/GameStopCorp/infra.chef.cookbook.automate_test1'
+issues_url 'https://github.com/GameStopCorp/infra.chef.cookbook.automate_test1/issues'
+version '0.1.0'
+chef_version '>= 12.1' if respond_to?(:chef_version)
